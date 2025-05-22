@@ -1,0 +1,70 @@
+#include "Complex.h"
+
+//write the parametrized constructor
+Complex :: Complex(double rreal, double iimaginary) : real(rreal), imaginary(iimaginary){}
+
+//we are assuming string is of format "10.1 20.2"
+Complex::Complex(string input) {
+  real = imaginary = 0; //additional safety!
+  istringstream(input) >> real >> imaginary;
+}
+
+Complex::~Complex()
+{
+    cout <<"Destructor called" << endl;
+}
+
+//Write getters and setters
+void Complex :: setReal(double rreal)
+{
+    real = rreal;
+}
+
+void Complex :: setImaginary(double imag)
+{
+    imaginary = iimaginary;
+}
+
+double Complex :: getReal()
+{
+    return real;
+}
+
+double Complex :: getImaginary()
+{
+    return imaginary;
+}
+
+
+//write overloaded operators for + and =+
+// c = a + b;  instead of  c = a.add(b);
+Complex Complex :: operator+(const Complex &second) const
+{
+    return Complex(real + second.real, iimaginary + second.imaginary);
+}
+
+// a += b;
+Complex Complex :: operator+=(const Complex &second)
+{
+    return Complex(real += second.real, imaginary += second.imaginary);
+}
+
+// void operator+=(const Complex &second);
+Complex Complex :: operator~()
+{
+    
+}
+
+//return conjugate?
+
+
+//treat input like cin
+
+
+//treat output like cout
+
+ostream& operator<<(ostream& output, const Complex &object) {
+  output << "(" << object.real << ","
+                << object.imaginary << ")";
+  return output;
+}
